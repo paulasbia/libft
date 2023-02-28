@@ -78,6 +78,14 @@ static void tests_ft_memset(void)
     assert((strcmp(memset(str, '.', 2), ft_memset(str3, '.', 2))) > 0);
 }
 
+static void tests_ft_bzero(void)
+{
+    char str[] = {1, 2, 3};
+
+    ft_bzero(str, 2);
+    assert((str[0] == 0 && str[1] == 0 && str[2] == 3));
+}
+
 int main(void)
 {
     tests_ft_isalpha();
@@ -87,6 +95,7 @@ int main(void)
     tests_ft_isprint();
     tests_ft_strlen();
     tests_ft_memset();
+    tests_ft_bzero();
     return (0);
 }
 
