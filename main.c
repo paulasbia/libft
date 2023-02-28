@@ -40,12 +40,6 @@ static void tests_ft_isalnum(void)
     //assert((ft_isalnum('a') == isalnum('a')));  
 }
 
-static void tests_ft_strlen(void)
-{
-    assert((ft_strlen("paula") == 5));
-    assert((ft_strlen("paula") == strlen("paula")));
-}
-
 static void tests_ft_isascii(void)
 {
     assert((ft_isascii('5') == 1));
@@ -68,14 +62,31 @@ static void tests_ft_isprint(void)
     //assert((ft_isprint(50) == isprint(50)));    
 }
 
+static void tests_ft_strlen(void)
+{
+    assert((ft_strlen("paula") == 5));
+    assert((ft_strlen("paula") == strlen("paula")));
+}
+
+static void tests_ft_memset(void)
+{
+    char str[] = "paula";
+    char str2[] = "paula";
+    char str3[] = "PaulA";
+
+    assert((strcmp(memset(str, '.', 2), ft_memset(str2, '.', 2))) == 0);
+    assert((strcmp(memset(str, '.', 2), ft_memset(str3, '.', 2))) > 0);
+}
+
 int main(void)
 {
-    tests_ft_strlen();
     tests_ft_isalpha();
     tests_ft_isdigit();
     tests_ft_isalnum();
     tests_ft_isascii();
     tests_ft_isprint();
+    tests_ft_strlen();
+    tests_ft_memset();
     return (0);
 }
 
