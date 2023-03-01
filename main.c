@@ -71,10 +71,9 @@ static void tests_ft_strlen(void)
 static void tests_ft_memset(void)
 {
     char str[] = "paula";
-    char str2[] = "paula";
     char str3[] = "PaulA";
 
-    assert((strcmp(memset(str, '.', 2), ft_memset(str2, '.', 2))) == 0);
+    assert((strcmp(memset(str, '.', 2), ft_memset(str, '.', 2))) == 0);
     assert((strcmp(memset(str, '.', 2), ft_memset(str3, '.', 2))) > 0);
 }
 
@@ -84,6 +83,17 @@ static void tests_ft_bzero(void)
 
     ft_bzero(str, 2);
     assert((str[0] == 0 && str[1] == 0 && str[2] == 3));
+}
+
+static void tests_ft_memcpy(void)
+{
+    char    str[] = "this is a test";
+    char    dest[1];
+
+    printf("the result of the ft_memcpy is: %p\n", ft_memcpy(dest, str, 14));
+    printf("the result of the memcpy is: %p\n", memcpy(dest, str, 14));
+
+    assert((strcmp(memcpy(dest, str, 14), ft_memcpy(dest, str, 14))) == 0);
 }
 
 int main(void)
@@ -96,6 +106,7 @@ int main(void)
     tests_ft_strlen();
     tests_ft_memset();
     tests_ft_bzero();
+    tests_ft_memcpy();
     return (0);
 }
 
