@@ -113,6 +113,14 @@ static void tests_ft_strlcpy(void)
     printf("the result of the ft_strlcpy is: %zu\n", ft_strlcpy(dest, str, 5));
 }
 
+static void tests_ft_strlcat(void)
+{
+    const char  str[] = "this is a test";
+    char        dest[] = "Hello! ";
+
+    printf("the result of the ft_strlcat is: %zu\n", ft_strlcat(dest, str, 10));
+}
+
 int main(void)
 {
     tests_ft_isalpha();
@@ -126,6 +134,7 @@ int main(void)
     tests_ft_memcpy();
     test_ft_memmove();
     tests_ft_strlcpy();
+    tests_ft_strlcat();
     return (0);
 }
 
