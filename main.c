@@ -96,6 +96,15 @@ static void tests_ft_memcpy(void)
     assert((strcmp(memcpy(dest, str, 14), ft_memcpy(dest, str, 14))) == 0);
 }
 
+static void test_ft_memmove(void)
+{
+    int src[10];
+    int dest[10];
+
+    ft_memmove(dest, src, 5);
+    printf("the result of the ft_memmove is: %p \n", dest);
+}
+
 int main(void)
 {
     tests_ft_isalpha();
@@ -107,6 +116,7 @@ int main(void)
     tests_ft_memset();
     tests_ft_bzero();
     tests_ft_memcpy();
+    test_ft_memmove();
     return (0);
 }
 
