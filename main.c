@@ -105,6 +105,14 @@ static void test_ft_memmove(void)
     printf("the result of the ft_memmove is: %p \n", dest);
 }
 
+static void tests_ft_strlcpy(void)
+{
+    char    str[] = "this is a test";
+    char    dest[10];
+
+    printf("the result of the ft_strlcpy is: %zu\n", ft_strlcpy(dest, str, 5));
+}
+
 int main(void)
 {
     tests_ft_isalpha();
@@ -117,6 +125,7 @@ int main(void)
     tests_ft_bzero();
     tests_ft_memcpy();
     test_ft_memmove();
+    tests_ft_strlcpy();
     return (0);
 }
 
