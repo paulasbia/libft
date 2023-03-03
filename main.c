@@ -156,8 +156,20 @@ static void testes_ft_strchr(void)
     assert((ft_strchr(str, 'z')) == NULL);
 
     assert((ft_strchr(str, 'a')) == &str[1]);
+    assert((ft_strchr(str, 'p')) == str);
 }
 
+static void testes_ft_strrchr(void)
+{
+    const char  str[] = "paula";
+
+    assert((ft_strrchr(str, 'a')) == &str[4]);
+    assert((ft_strrchr(str, 'p')) == &str[0]);
+    
+    assert((ft_strrchr(str, 'a')) == strrchr(str, 'a'));
+    assert((ft_strrchr(str, 'z')) == strrchr(str, 'z'));
+    assert((ft_strrchr(str, 'z')) == NULL);
+}
 int main(void)
 {
     tests_ft_isalpha();
@@ -175,6 +187,7 @@ int main(void)
     tests_ft_toupper();
     tests_ft_tolower();
     testes_ft_strchr();
+    testes_ft_strrchr();
     return (0);
 }
 
