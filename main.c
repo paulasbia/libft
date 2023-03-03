@@ -183,6 +183,14 @@ static void tests_ft_strncmp(void)
    assert(ft_strncmp(s1, s2, 3) == strncmp(s1, s2, 3));
 }
 
+static void tests_ft_memchr(void)
+{
+   unsigned char s[] = "test";
+   unsigned char c = 'e';
+
+   assert(ft_memchr(s, c, 3) == memchr(s, c, 3));
+}
+
 int main(void)
 {
     tests_ft_isalpha();
@@ -202,6 +210,7 @@ int main(void)
     tests_ft_strchr();
     tests_ft_strrchr();
     tests_ft_strncmp();
+    tests_ft_memchr();
     return (0);
 }
 
