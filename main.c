@@ -148,7 +148,7 @@ static void tests_ft_tolower(void)
     printf("the result for tolower is %c\n", tolower('/'));
 }
 
-static void testes_ft_strchr(void)
+static void tests_ft_strchr(void)
 {
     const char  str[] = "paula";
 
@@ -159,7 +159,7 @@ static void testes_ft_strchr(void)
     assert((ft_strchr(str, 'p')) == str);
 }
 
-static void testes_ft_strrchr(void)
+static void tests_ft_strrchr(void)
 {
     const char  str[] = "paula";
 
@@ -170,6 +170,19 @@ static void testes_ft_strrchr(void)
     assert((ft_strrchr(str, 'z')) == strrchr(str, 'z'));
     assert((ft_strrchr(str, 'z')) == NULL);
 }
+
+static void tests_ft_strncmp(void)
+{
+    const char  s1[] = "just";
+    const char s2[] = "jUst";
+
+   assert((ft_strncmp(s1, s2, 2) == 32));
+   assert((ft_strncmp(s1, s2, 1) == 0));
+
+   assert(ft_strncmp(s1, s2, 1) == strncmp(s1, s2, 1));
+   assert(ft_strncmp(s1, s2, 3) == strncmp(s1, s2, 3));
+}
+
 int main(void)
 {
     tests_ft_isalpha();
@@ -186,8 +199,9 @@ int main(void)
     tests_ft_strlcat();
     tests_ft_toupper();
     tests_ft_tolower();
-    testes_ft_strchr();
-    testes_ft_strrchr();
+    tests_ft_strchr();
+    tests_ft_strrchr();
+    tests_ft_strncmp();
     return (0);
 }
 
