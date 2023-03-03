@@ -130,8 +130,22 @@ static void tests_ft_toupper(void)
     assert((ft_toupper('/') == toupper('/'))); 
     assert((ft_toupper('a') == toupper('a')));
     assert((ft_toupper('A') == toupper('A')));  
-    printf("%c\n", toupper('A'));
-    printf("%c\n", toupper('/'));
+    printf("the result for toupper is %c\n", toupper('A'));
+    printf("the result for toupper is %c\n", toupper('/'));
+}
+
+static void tests_ft_tolower(void)
+{
+    assert((ft_tolower('a') == 'a'));
+    assert((ft_tolower('A') == 'a'));
+    assert((ft_tolower('Z') == 'z'));
+    assert((ft_tolower('/') == '/'));
+
+    assert((ft_tolower('/') == tolower('/'))); 
+    assert((ft_tolower('a') == tolower('a')));
+    assert((ft_tolower('A') == tolower('A')));  
+    printf("the result for tolower is %c\n", tolower('A'));
+    printf("the result for tolower is %c\n", tolower('/'));
 }
 
 int main(void)
@@ -149,6 +163,7 @@ int main(void)
     tests_ft_strlcpy();
     tests_ft_strlcat();
     tests_ft_toupper();
+    tests_ft_tolower();
     return (0);
 }
 
