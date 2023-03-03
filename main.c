@@ -148,6 +148,16 @@ static void tests_ft_tolower(void)
     printf("the result for tolower is %c\n", tolower('/'));
 }
 
+static void testes_ft_strchr(void)
+{
+    const char  str[] = "paula";
+
+    assert((ft_strchr(str, 'z')) == strchr(str, 'z'));
+    assert((ft_strchr(str, 'z')) == NULL);
+
+    assert((ft_strchr(str, 'a')) == &str[1]);
+}
+
 int main(void)
 {
     tests_ft_isalpha();
@@ -164,6 +174,7 @@ int main(void)
     tests_ft_strlcat();
     tests_ft_toupper();
     tests_ft_tolower();
+    testes_ft_strchr();
     return (0);
 }
 
