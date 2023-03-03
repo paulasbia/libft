@@ -121,6 +121,19 @@ static void tests_ft_strlcat(void)
     printf("the result of the ft_strlcat is: %zu\n", ft_strlcat(dest, str, 10));
 }
 
+static void tests_ft_toupper(void)
+{
+    assert((ft_toupper('a') == 'A'));
+    assert((ft_toupper('A') == 'A'));
+    assert((ft_toupper('/') == '/'));
+
+    assert((ft_toupper('/') == toupper('/'))); 
+    assert((ft_toupper('a') == toupper('a')));
+    assert((ft_toupper('A') == toupper('A')));  
+    printf("%c\n", toupper('A'));
+    printf("%c\n", toupper('/'));
+}
+
 int main(void)
 {
     tests_ft_isalpha();
@@ -135,6 +148,7 @@ int main(void)
     test_ft_memmove();
     tests_ft_strlcpy();
     tests_ft_strlcat();
+    tests_ft_toupper();
     return (0);
 }
 
