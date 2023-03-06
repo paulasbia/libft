@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:46:41 by paula             #+#    #+#             */
-/*   Updated: 2023/03/03 14:35:51 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/06 12:00:34 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int     ft_strncmp(const char *s1, const char *s2, size_t n);
 void    *ft_memchr(const void *s, int c, size_t n);
 void    *ft_memchr(const void *s, int c, size_t n);
 int ft_memcmp(const void *s1, const void *s2, size_t n);
+char    *ft_strnstr(const char *str, const char *find, size_t n);
 
 #endif

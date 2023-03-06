@@ -207,6 +207,23 @@ static void tests_ft_memcmp(void)
    printf("%d \n", ft_memcmp(s1, s2, 2));
 }
 
+static void test_ft_strnstr(void)
+{
+    char    str[] = "I will test this function";
+    char    *result = &str[12];
+    char    find[] = "this";
+    char    find2[] = "paula";
+    char    find3[] = "";
+
+    printf("%s \n", ft_strnstr(str, find, 30));
+    printf("%s \n", ft_strnstr(str, find2, 30));
+    printf("%s \n", ft_strnstr(str, find3, 30));
+
+    assert(ft_strnstr(str, find, 30) == result);
+    assert(ft_strnstr(str, find2, 30) == NULL);
+    assert(ft_strnstr(str, find3, 30) == str);
+}
+
 int main(void)
 {
     tests_ft_isalpha();
@@ -228,6 +245,7 @@ int main(void)
     tests_ft_strncmp();
     tests_ft_memchr();
     tests_ft_memcmp();
+    test_ft_strnstr();
     return (0);
 }
 
