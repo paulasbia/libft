@@ -2,6 +2,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <bsd/string.h>
 #include "libft.h"
 #include "unity.h"
@@ -221,30 +222,15 @@ static void tests_ft_strnstr(void)
     
 }
 
-/*int main(void)
+void    tests_ft_atoi(void)
 {
-    tests_ft_isalpha();
-    tests_ft_isdigit();
-    tests_ft_isalnum();
-    tests_ft_isascii();
-    tests_ft_isprint();
-    tests_ft_strlen();
-    tests_ft_memset();
-    tests_ft_bzero();
-    tests_ft_memcpy();
-    test_ft_memmove();
-    tests_ft_strlcpy();
-    tests_ft_strlcat();
-    tests_ft_toupper();
-    tests_ft_tolower();
-    tests_ft_strchr();
-    tests_ft_strrchr();
-    tests_ft_strncmp();
-    tests_ft_memchr();
-    tests_ft_memcmp();
-    test_ft_strnstr();
-    return (0);
-}*/
+    TEST_ASSERT_EQUAL_INT32(5, atoi("5"));
+    TEST_ASSERT_EQUAL_INT32(5, ft_atoi("5"));
+    TEST_ASSERT_EQUAL_INT32(-5, ft_atoi("-5"));
+    TEST_ASSERT_EQUAL_INT32(15, ft_atoi("15"));
+    TEST_ASSERT_EQUAL_INT32(0, ft_atoi("0"));
+    TEST_ASSERT_EQUAL_INT32(-109875, ft_atoi("-109875"));
+}
 
 void setUp(void) {
     // set stuff up here
@@ -277,6 +263,7 @@ int main(void) {
     RUN_TEST(tests_ft_memchr);
     RUN_TEST(tests_ft_memcmp);
     RUN_TEST(tests_ft_strnstr);
+    RUN_TEST(tests_ft_atoi);
     return UNITY_END();
 }
 
