@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:16:39 by paula             #+#    #+#             */
-/*   Updated: 2023/03/06 21:49:18 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/06 21:52:48 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int ft_atoi(const char *nptr)
 
     signal = 1;
     result = 0;
+    while (*nptr == ' ' || (*nptr >= 9 && *nptr <= 13))
+        nptr++;
     if (*nptr == '+' || *nptr == '-')
     {
         if (*nptr == '-')

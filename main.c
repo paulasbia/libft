@@ -230,6 +230,7 @@ void    tests_ft_atoi(void)
     TEST_ASSERT_EQUAL_INT32(15, ft_atoi("15"));
     TEST_ASSERT_EQUAL_INT32(0, ft_atoi("0"));
     TEST_ASSERT_EQUAL_INT32(-109875, ft_atoi("-109875"));
+    TEST_ASSERT_EQUAL_INT32(-109875, ft_atoi("      -109875"));
 }
 
 void setUp(void) {
