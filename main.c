@@ -2,6 +2,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdio.h>
+#include <bsd/string.h>
 #include "libft.h"
 #include "unity.h"
 
@@ -84,8 +85,8 @@ static void tests_ft_memcpy(void)
     char    str[] = "this is a test";
     char    dest[1];
 
-    printf("the result of the ft_memcpy is: %p\n", ft_memcpy(dest, str, 14));
-    printf("the result of the memcpy is: %p\n", memcpy(dest, str, 14));
+    // printf("the result of the ft_memcpy is: %p\n", ft_memcpy(dest, str, 14));
+    // printf("the result of the memcpy is: %p\n", memcpy(dest, str, 14));
     TEST_ASSERT_EQUAL_MEMORY(memcpy(dest, str, 14), ft_memcpy(dest, str, 14), 14);
 }
 
@@ -129,110 +130,96 @@ static void tests_ft_strlcat(void)
     TEST_ASSERT_EQUAL_MEMORY(expected, dest, 12);
 }
 
-// static void tests_ft_toupper(void)
-// {
-//     assert((ft_toupper('a') == 'A'));
-//     assert((ft_toupper('A') == 'A'));
-//     assert((ft_toupper('/') == '/'));
+static void tests_ft_toupper(void)
+{
+    TEST_ASSERT_EQUAL('A', ft_toupper('a'));
+    TEST_ASSERT_EQUAL('A', ft_toupper('A'));
+    TEST_ASSERT_EQUAL('/', ft_toupper('/'));
+    TEST_ASSERT_EQUAL(toupper('z'), ft_toupper('z'));
+    TEST_ASSERT_EQUAL(toupper('Z'), ft_toupper('Z'));
+    TEST_ASSERT_EQUAL(toupper('/'), ft_toupper('/'));
+}
 
-//     assert((ft_toupper('/') == toupper('/'))); 
-//     assert((ft_toupper('a') == toupper('a')));
-//     assert((ft_toupper('A') == toupper('A')));  
-//     printf("the result for toupper is %c\n", toupper('A'));
-//     printf("the result for toupper is %c\n", toupper('/'));
-// }
+static void tests_ft_tolower(void)
+{
+    TEST_ASSERT_EQUAL('a', ft_tolower('a'));
+    TEST_ASSERT_EQUAL('a', ft_tolower('A'));
+    TEST_ASSERT_EQUAL('/', ft_tolower('/'));
+    TEST_ASSERT_EQUAL(tolower('z'), ft_tolower('z'));
+    TEST_ASSERT_EQUAL(tolower('Z'), ft_tolower('Z'));
+    TEST_ASSERT_EQUAL(tolower('/'), ft_tolower('/'));
+}
 
-// static void tests_ft_tolower(void)
-// {
-//     assert((ft_tolower('a') == 'a'));
-//     assert((ft_tolower('A') == 'a'));
-//     assert((ft_tolower('Z') == 'z'));
-//     assert((ft_tolower('/') == '/'));
+static void tests_ft_strchr(void)
+{
+    const char  str[] = "paula";
 
-//     assert((ft_tolower('/') == tolower('/'))); 
-//     assert((ft_tolower('a') == tolower('a')));
-//     assert((ft_tolower('A') == tolower('A')));  
-//     printf("the result for tolower is %c\n", tolower('A'));
-//     printf("the result for tolower is %c\n", tolower('/'));
-// }
+    TEST_ASSERT_EQUAL(strchr(str, 'z'), ft_strchr(str, 'z'));
+    TEST_ASSERT_EQUAL(strchr(str, 'a'), ft_strchr(str, 'a'));
+    TEST_ASSERT_EQUAL_PTR(str + 1, ft_strchr(str, 'a'));
+    TEST_ASSERT_EQUAL_PTR(str, ft_strchr(str, 'p'));
+    TEST_ASSERT_EQUAL_PTR(NULL, ft_strchr(str, 'z'));
 
-// static void tests_ft_strchr(void)
-// {
-//     const char  str[] = "paula";
+}
 
-//     assert((ft_strchr(str, 'z')) == strchr(str, 'z'));
-//     assert((ft_strchr(str, 'z')) == NULL);
+static void tests_ft_strrchr(void)
+{
+    const char  str[] = "paula";
 
-//     assert((ft_strchr(str, 'a')) == &str[1]);
-//     assert((ft_strchr(str, 'p')) == str);
-// }
-
-// static void tests_ft_strrchr(void)
-// {
-//     const char  str[] = "paula";
-
-//     assert((ft_strrchr(str, 'a')) == &str[4]);
-//     assert((ft_strrchr(str, 'p')) == &str[0]);
-    
-//     assert((ft_strrchr(str, 'a')) == strrchr(str, 'a'));
-//     assert((ft_strrchr(str, 'z')) == strrchr(str, 'z'));
-//     assert((ft_strrchr(str, 'z')) == NULL);
-// }
+    TEST_ASSERT_EQUAL_PTR(str + 4, ft_strrchr(str, 'a'));
+    TEST_ASSERT_EQUAL_PTR(str, ft_strrchr(str, 'p'));
+    TEST_ASSERT_EQUAL(strrchr(str, 'a'), ft_strrchr(str, 'a'));
+    TEST_ASSERT_EQUAL(strrchr(str, 'z'), ft_strrchr(str, 'z'));
+    TEST_ASSERT_EQUAL(NULL, ft_strrchr(str, 'j'));
+}
 
 static void tests_ft_strncmp(void)
 {
     const char  s1[] = "just";
     const char s2[] = "jUst";
 
-   assert((ft_strncmp(s1, s2, 2) == 32));
-   assert((ft_strncmp(s1, s2, 1) == 0));
-
-   assert(ft_strncmp(s1, s2, 1) == strncmp(s1, s2, 1));
-   assert(ft_strncmp(s1, s2, 3) == strncmp(s1, s2, 3));
-
-   TEST_ASSERT_EQUAL(32, ft_strncmp(s1, s2, 2));
+    TEST_ASSERT_EQUAL(0, ft_strncmp(s1, s2, 1));
+    TEST_ASSERT_EQUAL(32, ft_strncmp(s1, s2, 2));
+    TEST_ASSERT_EQUAL(strncmp(s1, s2, 4), ft_strncmp(s1, s2, 4));
+    TEST_ASSERT_EQUAL(strncmp(s1, s2, 1), ft_strncmp(s1, s2, 1));
 }
 
-// static void tests_ft_memchr(void)
-// {
-//    unsigned char s[] = "test";
-//    unsigned char c = 'e';
+static void tests_ft_memchr(void)
+{
+   unsigned char    s[] = "test";
+   unsigned char    c = 'e';
+   unsigned char    d = 'j';
 
-//    assert(ft_memchr(s, c, 3) == memchr(s, c, 3));
-// }
+   TEST_ASSERT_EQUAL(memchr(s, c, 3), ft_memchr(s, c, 3));
+   TEST_ASSERT_EQUAL(NULL, ft_memchr(s, d, 4));
+}
 
-// static void tests_ft_memcmp(void)
-// {
-//     const char  s1[] = "just";
-//     const char s2[] = "jUst";
-//     const char  s3[] = "just";
+static void tests_ft_memcmp(void)
+{
+    const char  s1[] = "just";
+    const char s2[] = "jUst";
+    const char  s3[] = "just";
 
-//    assert((ft_memcmp(s1, s2, 2) == 32));
-//    assert((ft_memcmp(s1, s2, 1) == 0));
+   TEST_ASSERT_EQUAL(32, ft_memcmp(s1, s2, 2));
+   TEST_ASSERT_EQUAL(0, ft_memcmp(s1, s3, 4));
+   TEST_ASSERT_EQUAL(memcmp(s1, s2, 4) > 0, ft_memcmp(s1, s2, 4) > 0);
+   TEST_ASSERT_TRUE(ft_memcmp(s1, s2, 2) > 0 && memcmp(s1, s2, 2) > 0);
+}
 
-//    assert(ft_memcmp(s1, s2, 1) == memcmp(s1, s2, 1));
-//    assert((ft_memcmp(s1, s2, 2) > 0) && (memcmp(s1, s2, 2) > 0));
-//    assert((ft_memcmp(s2, s3, 2) < 0) && (memcmp(s2, s3, 2) < 0));
-//    printf("%d \n", memcmp(s1, s2, 2));
-//    printf("%d \n", ft_memcmp(s1, s2, 2));
-// }
+static void tests_ft_strnstr(void)
+{
+    char    str[] = "I will test this function";
+    char    *result = &str[12];
+    char    find[] = "this";
+    char    find2[] = "paula";
+    char    find3[] = "";
 
-// static void test_ft_strnstr(void)
-// {
-//     char    str[] = "I will test this function";
-//     char    *result = &str[12];
-//     char    find[] = "this";
-//     char    find2[] = "paula";
-//     char    find3[] = "";
-
-//     printf("%s \n", ft_strnstr(str, find, 30));
-//     printf("%s \n", ft_strnstr(str, find2, 30));
-//     printf("%s \n", ft_strnstr(str, find3, 30));
-
-//     assert(ft_strnstr(str, find, 30) == result);
-//     assert(ft_strnstr(str, find2, 30) == NULL);
-//     assert(ft_strnstr(str, find3, 30) == str);
-// }
+    TEST_ASSERT_EQUAL_PTR(result, ft_strnstr(str, find, 30));
+    TEST_ASSERT_EQUAL_PTR(NULL, ft_strnstr(str, find2, 30));
+    TEST_ASSERT_EQUAL_PTR(str, ft_strnstr(str, find3, 30));
+    TEST_ASSERT_EQUAL_PTR(strnstr(str, find3, 30), ft_strnstr(str, find3, 30));
+    
+}
 
 /*int main(void)
 {
@@ -271,7 +258,6 @@ void tearDown(void) {
 int main(void) {
     UNITY_BEGIN();
     RUN_TEST(tests_ft_isalpha);
-    RUN_TEST(tests_ft_strncmp);
     RUN_TEST(tests_ft_isdigit);
     RUN_TEST(tests_ft_isalnum);
     RUN_TEST(tests_ft_isascii);
@@ -283,7 +269,14 @@ int main(void) {
     RUN_TEST(tests_ft_memmove);
     RUN_TEST(tests_ft_strlcpy);
     RUN_TEST(tests_ft_strlcat);
-
+    RUN_TEST(tests_ft_toupper);
+    RUN_TEST(tests_ft_tolower);
+    RUN_TEST(tests_ft_strchr);
+    RUN_TEST(tests_ft_strrchr);
+    RUN_TEST(tests_ft_strncmp);
+    RUN_TEST(tests_ft_memchr);
+    RUN_TEST(tests_ft_memcmp);
+    RUN_TEST(tests_ft_strnstr);
     return UNITY_END();
 }
 
