@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 15:34:14 by paula             #+#    #+#             */
-/*   Updated: 2023/03/02 16:13:45 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/06 16:16:03 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void    *ft_memmove(void *dest, const void *src, size_t n)
 {
-    if ((dest == NULL) && (src == NULL))
+    if ((dest == NULL) || (src == NULL))
     {
         return (NULL);
     }
@@ -22,7 +22,7 @@ void    *ft_memmove(void *dest, const void *src, size_t n)
     {
         while (n > 0)
         {
-            ((unsigned char *)dest)[n] = ((unsigned char *)src)[n];
+            ((unsigned char *)dest)[n - 1] = ((unsigned char *)src)[n - 1];
             n--;
         }
     }
