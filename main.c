@@ -84,11 +84,10 @@ static void tests_ft_bzero(void)
 static void tests_ft_memcpy(void)
 {
     char    str[] = "this is a test";
-    char    dest[1];
+    char    dest[14];
+    char    dest2[14];
 
-    // printf("the result of the ft_memcpy is: %p\n", ft_memcpy(dest, str, 14));
-    // printf("the result of the memcpy is: %p\n", memcpy(dest, str, 14));
-    TEST_ASSERT_EQUAL_MEMORY(memcpy(dest, str, 14), ft_memcpy(dest, str, 14), 14);
+    TEST_ASSERT_EQUAL_MEMORY(memcpy(dest, str, 14), ft_memcpy(dest2, str, 14), 14);
 }
 
 static void tests_ft_memmove(void)
@@ -249,7 +248,15 @@ void    tests_ft_calloc(void)
     // printf("unsigned char: %d\n", *((unsigned char *) test));
     // printf("short int: %d\n", *((short int *) test));
     // printf("int: %d\n", *((int *) test));
+}
 
+void    tests_ft_strdup(void)
+{
+    char    s[] = "I will test this!";
+    char    *dest;
+
+    dest = ft_strdup(s);
+    TEST_ASSERT_EQUAL_MEMORY(s, dest, 18);
 }
 
 void setUp(void) {
@@ -285,6 +292,7 @@ int main(void) {
     RUN_TEST(tests_ft_strnstr);
     RUN_TEST(tests_ft_atoi);
     RUN_TEST(tests_ft_calloc);
+    RUN_TEST(tests_ft_strdup);
     return UNITY_END();
 }
 
