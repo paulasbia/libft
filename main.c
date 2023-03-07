@@ -233,6 +233,25 @@ void    tests_ft_atoi(void)
     TEST_ASSERT_EQUAL_INT32(-109875, ft_atoi("      -109875"));
 }
 
+void    tests_ft_calloc(void)
+{
+    int     expected[] = {0, 0, 0, 0};
+    char    expected2[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int     *array = (int *) ft_calloc(4, sizeof(int));
+    int     *array2 = (int *) ft_calloc(0, sizeof(int));
+
+    TEST_ASSERT_EQUAL_MEMORY(expected, array, 4);
+    TEST_ASSERT_EQUAL_MEMORY(expected2, (char *) array, 16);
+    TEST_ASSERT_EQUAL_PTR(NULL, array2);
+
+    // char test[] = {0b11111111, 1, 0, 1};// 00000000 00000001 = 0000000111111111 
+    // printf("char: %d\n", *test);
+    // printf("unsigned char: %d\n", *((unsigned char *) test));
+    // printf("short int: %d\n", *((short int *) test));
+    // printf("int: %d\n", *((int *) test));
+
+}
+
 void setUp(void) {
     // set stuff up here
 }
@@ -265,6 +284,7 @@ int main(void) {
     RUN_TEST(tests_ft_memcmp);
     RUN_TEST(tests_ft_strnstr);
     RUN_TEST(tests_ft_atoi);
+    RUN_TEST(tests_ft_calloc);
     return UNITY_END();
 }
 
