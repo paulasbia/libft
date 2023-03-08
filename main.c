@@ -93,11 +93,14 @@ static void tests_ft_memcpy(void)
 static void tests_ft_memmove(void)
 {
     char    src[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    char    src2[] = {-1, -2, -3, 4, 5, 6, 7, 8, 9, 10};
     char    dest[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     char    dest2[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     char    *dest3 = NULL;
+    char    dest4[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     char    expected1[] = {1, 2, 3, 4, 5, 0, 0, 0, 0, 0};
     char    expected2[] = {0, 0, 0, 0, 0, 6, 7, 8, 9, 10};
+    char    expected3[] = {-1, -2, -3, 4, 5, 0, 0, 0, 0, 0};
 
     char *ret = ft_memmove(dest, src, 5);
     TEST_ASSERT_EQUAL_PTR(dest, ret);
@@ -108,6 +111,10 @@ static void tests_ft_memmove(void)
     TEST_ASSERT_EQUAL_MEMORY(expected2, dest2, 10);
 
     TEST_ASSERT_EQUAL(NULL, ft_memmove(dest3, src, 10));
+    
+    char *ret3 = ft_memmove(dest4, src2, 5);
+    TEST_ASSERT_EQUAL_PTR(dest4, ret3);
+    TEST_ASSERT_EQUAL_MEMORY(expected3, dest4, 10);
 }
 
 static void tests_ft_strlcpy(void)
@@ -259,6 +266,28 @@ void    tests_ft_strdup(void)
     TEST_ASSERT_EQUAL_MEMORY(s, dest, 18);
 }
 
+void    tests_ft_substr(void)
+{
+    char    str[] = "abcdefghij";
+    char    *sub;
+    char    expected[] = "abc";
+    char    expected2[] = "hij";
+
+    sub = ft_substr(str, 0, 3);
+    TEST_ASSERT_EQUAL_STRING(expected, sub);
+    
+    sub = ft_substr(str, 7, 3);
+    TEST_ASSERT_EQUAL_STRING(expected2, sub);
+
+    sub = ft_substr(str, 20, 3);
+    TEST_ASSERT_EQUAL_STRING(0, sub);
+    
+
+    sub = ft_substr(str, 0, 50);
+    TEST_ASSERT_EQUAL_STRING(str, sub);
+    TEST_ASSERT_EQUAL(ft_strlen(sub), ft_strlen(str));
+}
+
 void setUp(void) {
     // set stuff up here
 }
@@ -293,6 +322,7 @@ int main(void) {
     RUN_TEST(tests_ft_atoi);
     RUN_TEST(tests_ft_calloc);
     RUN_TEST(tests_ft_strdup);
+    RUN_TEST(tests_ft_substr);
     return UNITY_END();
 }
 
