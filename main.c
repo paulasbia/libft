@@ -275,17 +275,29 @@ void    tests_ft_substr(void)
 
     sub = ft_substr(str, 0, 3);
     TEST_ASSERT_EQUAL_STRING(expected, sub);
-    
+    free(sub);
     sub = ft_substr(str, 7, 3);
     TEST_ASSERT_EQUAL_STRING(expected2, sub);
-
+    free(sub);
     sub = ft_substr(str, 20, 3);
     TEST_ASSERT_EQUAL_STRING(0, sub);
-    
+    free(sub);
 
     sub = ft_substr(str, 0, 50);
     TEST_ASSERT_EQUAL_STRING(str, sub);
     TEST_ASSERT_EQUAL(ft_strlen(sub), ft_strlen(str));
+    free(sub);
+}
+
+void tests_ft_strjoin(void)
+{
+    char    s1[] = "test ";
+    char    s2[] = "this!";
+    char    expected[] = "test this!";
+    char    *copy;
+
+    copy = ft_strjoin(s1, s2);
+    TEST_ASSERT_EQUAL_STRING(expected, copy);
 }
 
 void setUp(void) {
@@ -323,6 +335,7 @@ int main(void) {
     RUN_TEST(tests_ft_calloc);
     RUN_TEST(tests_ft_strdup);
     RUN_TEST(tests_ft_substr);
+    RUN_TEST(tests_ft_strjoin);
     return UNITY_END();
 }
 
