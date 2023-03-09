@@ -300,6 +300,16 @@ void tests_ft_strjoin(void)
     TEST_ASSERT_EQUAL_STRING(expected, copy);
 }
 
+void    tests_ft_strtrim(void)
+{
+    char    s1[] = "   test   ";
+    //char    s2[] = "abcdefghijkl";
+    char    expected[] = "test";
+    
+    TEST_ASSERT_EQUAL_STRING(expected, ft_strtrim(s1, " "));
+    TEST_ASSERT_EQUAL_STRING(expected, ft_strtrim(s1, "kl"));
+}
+
 void setUp(void) {
     // set stuff up here
 }
