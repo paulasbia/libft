@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 09:04:42 by paula             #+#    #+#             */
-/*   Updated: 2023/03/09 09:07:41 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/16 10:35:40 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,32 @@ char    *ft_substr(char const *s, unsigned int start, size_t len)
 {
     char    *sub;
     size_t  s_len;
+    int     i;
     
     if (s == 0)
     {
         return (0);
-    }
+    }   
     s_len = ft_strlen(s) + 1;
     if (start >= s_len)
 	{
         return (NULL);
 	}
-    sub = malloc(sizeof(char) * (s_len - start));
+    if (s_len - start >= len)
+        sub = malloc(sizeof(char) * (len + 1));
+    else
+        sub = malloc(sizeof(char) * (s_len - start));
     if (sub == 0)
     {
         return (NULL);
     }
-    ft_memcpy(sub, &s[start], len);
-    sub[len] = 0;
+    i = 0;
+    while (s[start] && i < len && start < s_len)
+    {
+        sub[i] = s[start];
+        i++;
+        start++;
+    }
+    sub[i] = 0;
     return (sub);    
 }

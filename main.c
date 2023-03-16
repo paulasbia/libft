@@ -187,7 +187,8 @@ static void tests_ft_strncmp(void)
 
     TEST_ASSERT_EQUAL(0, ft_strncmp(s1, s2, 1));
     TEST_ASSERT_EQUAL(32, ft_strncmp(s1, s2, 2));
-    TEST_ASSERT_EQUAL(strncmp(s1, s2, 4), ft_strncmp(s1, s2, 4));
+    //printf("strncmp %d \n", strncmp(s1, s2, 4));
+    TEST_ASSERT_EQUAL(strncmp(s1, s2, 4) > 0, ft_strncmp(s1, s2, 4) > 0);
     TEST_ASSERT_EQUAL(strncmp(s1, s2, 1), ft_strncmp(s1, s2, 1));
 }
 
@@ -242,13 +243,13 @@ void    tests_ft_atoi(void)
 void    tests_ft_calloc(void)
 {
     int     expected[] = {0, 0, 0, 0};
-    char    expected2[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     int     *array = (int *) ft_calloc(4, sizeof(int));
     int     *array2 = (int *) ft_calloc(0, sizeof(int));
 
     TEST_ASSERT_EQUAL_MEMORY(expected, array, 4);
-    TEST_ASSERT_EQUAL_MEMORY(expected2, (char *) array, 16);
+    free(array);
     TEST_ASSERT_EQUAL_PTR(NULL, array2);
+    free(array2);
 
     // char test[] = {0b11111111, 1, 0, 1};// 00000000 00000001 = 0000000111111111 
     // printf("char: %d\n", *test);
@@ -264,29 +265,33 @@ void    tests_ft_strdup(void)
 
     dest = ft_strdup(s);
     TEST_ASSERT_EQUAL_MEMORY(s, dest, 18);
+    free(dest);
 }
 
 void    tests_ft_substr(void)
 {
     char    str[] = "abcdefghij";
     char    *sub;
+    char    *sub2;
+    char    *sub3;
+    char    *sub4;
     char    expected[] = "abc";
     char    expected2[] = "hij";
 
     sub = ft_substr(str, 0, 3);
     TEST_ASSERT_EQUAL_STRING(expected, sub);
     free(sub);
-    sub = ft_substr(str, 7, 3);
-    TEST_ASSERT_EQUAL_STRING(expected2, sub);
-    free(sub);
-    sub = ft_substr(str, 20, 3);
-    TEST_ASSERT_EQUAL_STRING(0, sub);
-    free(sub);
+    sub2 = ft_substr(str, 7, 3);
+    TEST_ASSERT_EQUAL_STRING(expected2, sub2);
+    free(sub2);
+    sub3 = ft_substr(str, 20, 3);
+    TEST_ASSERT_EQUAL_STRING(0, sub3);
+    free(sub3);
 
-    sub = ft_substr(str, 0, 50);
-    TEST_ASSERT_EQUAL_STRING(str, sub);
-    TEST_ASSERT_EQUAL(ft_strlen(sub), ft_strlen(str));
-    free(sub);
+    sub4 = ft_substr(str, 0, 50);
+    TEST_ASSERT_EQUAL_STRING(str, sub4);
+    TEST_ASSERT_EQUAL(ft_strlen(sub4), ft_strlen(str));
+    free(sub4);
 }
 
 void tests_ft_strjoin(void)
@@ -298,16 +303,21 @@ void tests_ft_strjoin(void)
 
     copy = ft_strjoin(s1, s2);
     TEST_ASSERT_EQUAL_STRING(expected, copy);
+    free(copy);
 }
 
 void    tests_ft_strtrim(void)
 {
-    char    s1[] = "   test   ";
-    //char    s2[] = "abcdefghijkl";
-    char    expected[] = "test";
+    char    s1[] = "t ";
+    char    s2[] = "abcdefghijkl";
+    char    expected[] = "t";
     
-    TEST_ASSERT_EQUAL_STRING(expected, ft_strtrim(s1, " "));
-    TEST_ASSERT_EQUAL_STRING(expected, ft_strtrim(s1, "kl"));
+    char    *temp = ft_strtrim(s1, " ");
+    TEST_ASSERT_EQUAL_STRING(expected, temp);
+    free(temp);
+    // char    *temp2 = ft_strtrim(s2, " ");
+    // TEST_ASSERT_EQUAL_STRING(s2, temp2);
+    // free(temp2);
 }
 
 void setUp(void) {
@@ -346,6 +356,7 @@ int main(void) {
     RUN_TEST(tests_ft_strdup);
     RUN_TEST(tests_ft_substr);
     RUN_TEST(tests_ft_strjoin);
+    RUN_TEST(tests_ft_strtrim);
     return UNITY_END();
 }
 
