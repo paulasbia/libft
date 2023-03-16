@@ -315,9 +315,9 @@ void    tests_ft_strtrim(void)
     char    *temp = ft_strtrim(s1, " ");
     TEST_ASSERT_EQUAL_STRING(expected, temp);
     free(temp);
-    // char    *temp2 = ft_strtrim(s2, " ");
-    // TEST_ASSERT_EQUAL_STRING(s2, temp2);
-    // free(temp2);
+    char    *temp2 = ft_strtrim(s2, " ");
+    TEST_ASSERT_EQUAL_STRING(s2, temp2);
+    free(temp2);
 }
 
 void setUp(void) {
