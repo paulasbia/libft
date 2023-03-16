@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:48:19 by paula             #+#    #+#             */
-/*   Updated: 2023/03/16 09:59:58 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/16 13:45:46 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char    *ft_strdup(const char *s)
     size_t  len;
 
     len = ft_strlen(s) + 1;
-    ptr = malloc(len);
+    ptr = (char *)malloc(len);
     if (ptr == NULL)
     {
         return (0);

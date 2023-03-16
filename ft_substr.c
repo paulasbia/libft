@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 09:04:42 by paula             #+#    #+#             */
-/*   Updated: 2023/03/16 10:35:40 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/16 13:43:44 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ char    *ft_substr(char const *s, unsigned int start, size_t len)
         return (NULL);
 	}
     if (s_len - start >= len)
-        sub = malloc(sizeof(char) * (len + 1));
+        sub = (char *)malloc(sizeof(char) * (len + 1));
     else
-        sub = malloc(sizeof(char) * (s_len - start));
+        sub = (char *)malloc(sizeof(char) * (s_len - start));
     if (sub == 0)
     {
         return (NULL);

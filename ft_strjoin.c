@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:53:59 by paula             #+#    #+#             */
-/*   Updated: 2023/03/08 11:38:49 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/16 13:45:23 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char    *ft_strjoin(char const *s1, char const *s2)
     char    *nstr;
     char    *ret;
 
-    nstr = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+    nstr = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
     ret = nstr;
     if (nstr == 0)
     {
