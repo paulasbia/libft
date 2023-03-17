@@ -320,6 +320,20 @@ void    tests_ft_strtrim(void)
     free(temp2);
 }
 
+void    tests_ft_putchar(void)
+{
+    FILE    *file;
+    char    buff;
+
+    file = fopen("teste.txt", "w");
+    ft_putchar('T', file->_fileno);
+    fclose(file);
+    file = fopen("teste.txt", "r");
+    fread(&buff, 1, 1, file);
+    TEST_ASSERT_EQUAL_CHAR('T', buff);
+    fclose(file);
+}
+
 void setUp(void) {
     // set stuff up here
 }
@@ -357,6 +371,7 @@ int main(void) {
     RUN_TEST(tests_ft_substr);
     RUN_TEST(tests_ft_strjoin);
     RUN_TEST(tests_ft_strtrim);
+    RUN_TEST(tests_ft_putchar);
     return UNITY_END();
 }
 
