@@ -326,7 +326,7 @@ void    tests_ft_putchar(void)
     char    buff;
 
     file = fopen("teste.txt", "w");
-    ft_putchar('T', file->_fileno);
+    ft_putchar_fd('T', file->_fileno);
     fclose(file);
     file = fopen("teste.txt", "r");
     fread(&buff, 1, 1, file);
