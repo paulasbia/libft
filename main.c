@@ -349,6 +349,21 @@ void    tests_ft_putstr_fd(void)
     fclose(file);
 }
 
+void    tests_ft_putendl_fd(void)
+{
+    FILE    *file;
+    char    buff[7];
+
+    file = fopen("teste3.txt", "w");
+    ft_putendl_fd("Hello!", file->_fileno);
+    fclose(file);
+    file = fopen("teste3.txt", "r");
+    fread(buff, 7, 7, file);
+    //printf("%s", buff);
+    TEST_ASSERT_EQUAL_STRING("Hello!\n", buff);
+    fclose(file);
+}
+
 void setUp(void) {
     // set stuff up here
 }
@@ -388,6 +403,7 @@ int main(void) {
     RUN_TEST(tests_ft_strtrim);
     RUN_TEST(tests_ft_putchar_fd);
     RUN_TEST(tests_ft_putstr_fd);
+    RUN_TEST(tests_ft_putendl_fd);
     return UNITY_END();
 }
 
