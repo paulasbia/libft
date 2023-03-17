@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:46:41 by paula             #+#    #+#             */
-/*   Updated: 2023/03/17 11:01:50 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/17 11:03:02 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define LIBFT
 
 #include <stdlib.h>
+#include <unistd.h>
 
 int     ft_isalpha(int c);
 int     ft_isdigit(int c);

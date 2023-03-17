@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 09:04:42 by paula             #+#    #+#             */
-/*   Updated: 2023/03/16 13:43:44 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/17 11:07:11 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char    *ft_substr(char const *s, unsigned int start, size_t len)
 {
     char    *sub;
     size_t  s_len;
-    int     i;
+    size_t     i;
     
     if (s == 0)
     {

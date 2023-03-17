@@ -320,7 +320,7 @@ void    tests_ft_strtrim(void)
     free(temp2);
 }
 
-void    tests_ft_putchar(void)
+void    tests_ft_putchar_fd(void)
 {
     FILE    *file;
     char    buff;
@@ -371,7 +371,7 @@ int main(void) {
     RUN_TEST(tests_ft_substr);
     RUN_TEST(tests_ft_strjoin);
     RUN_TEST(tests_ft_strtrim);
-    RUN_TEST(tests_ft_putchar);
+    RUN_TEST(tests_ft_putchar_fd);
     return UNITY_END();
 }
 
