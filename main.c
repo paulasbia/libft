@@ -364,6 +364,21 @@ void    tests_ft_putendl_fd(void)
     fclose(file);
 }
 
+void    tests_ft_putnbr_fd(void)
+{
+    FILE    *file;
+    char    nbr[3];
+
+    file = fopen("teste_nbr", "w");
+    ft_putnbr_fd(-42, file->_fileno);
+    fclose(file);
+    file = fopen("teste_nbr", "r");
+    fread(nbr, 3, 3, file);
+    //printf("%s", nbr);
+    TEST_ASSERT_EQUAL_STRING("-42", nbr);
+    fclose(file);
+}
+
 void setUp(void) {
     // set stuff up here
 }
@@ -404,6 +419,7 @@ int main(void) {
     RUN_TEST(tests_ft_putchar_fd);
     RUN_TEST(tests_ft_putstr_fd);
     RUN_TEST(tests_ft_putendl_fd);
+    RUN_TEST(tests_ft_putnbr_fd);
     return UNITY_END();
 }
 
