@@ -379,6 +379,14 @@ void    tests_ft_putnbr_fd(void)
     fclose(file);
 }
 
+void    tests_cal_count(void)
+{
+    char    s[] = "";
+    char    c = ' ';
+    
+    printf("%ld\n", cal_count(s, c));
+}
+
 void setUp(void) {
     // set stuff up here
 }
@@ -420,6 +428,7 @@ int main(void) {
     RUN_TEST(tests_ft_putstr_fd);
     RUN_TEST(tests_ft_putendl_fd);
     RUN_TEST(tests_ft_putnbr_fd);
+    RUN_TEST(tests_cal_count);
     return UNITY_END();
 }
 
