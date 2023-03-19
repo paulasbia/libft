@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:39:18 by paula             #+#    #+#             */
-/*   Updated: 2023/03/18 11:14:31 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/19 09:47:36 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,53 @@ size_t     cal_count(char const *s, char c)
     return(count);
 }
 
+char    strings(char const *str, int start, int len)
+{
+    char    *new;
+    char    *r_new;
+    int     k;
+
+    new = (char *)malloc(sizeof(char) * (len + 1));
+    if (new == 0)
+    {
+        return (NULL);
+    }
+    r_new = new;
+    k = 0;
+    while (k < len)
+    {
+        *new = str[k + start];
+        k++;
+        new++;
+    }
+    *new = 0;
+    return(r_new);    
+}
+
 char    **ft_split(char const *s, char c)
 {
     char    **result;
+    int     i;
+    int     j;
 
     result = (char **)malloc(sizeof(char *) * cal_count(s, c));
+    if (result == 0)
+        return (NULL);
+    i = 0;
+    j = 0;
+    while (i < ft_strlen(s))
+    {
+        if (s[i] != c && s[i] != 0)
+        {
+            i++;
+        }
+        else if (s[i] == c)
+        {
+            result[j] = strings(s, j, i);
+            j++;
+        }
+    }
+    
+    
     return(result);
 }
