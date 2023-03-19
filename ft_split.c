@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:39:18 by paula             #+#    #+#             */
-/*   Updated: 2023/03/19 09:47:36 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/19 10:23:00 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ size_t     cal_count(char const *s, char c)
     return(count);
 }
 
-char    strings(char const *str, int start, int len)
+char    *strings(char const *str, int start, int len)
 {
     char    *new;
     char    *r_new;
@@ -54,27 +54,30 @@ char    strings(char const *str, int start, int len)
 char    **ft_split(char const *s, char c)
 {
     char    **result;
-    int     i;
-    int     j;
+    size_t     start;
+    size_t     len;
+    size_t     i;
 
     result = (char **)malloc(sizeof(char *) * cal_count(s, c));
     if (result == 0)
         return (NULL);
+    start = 0;
+    len = 1;
     i = 0;
-    j = 0;
-    while (i < ft_strlen(s))
+    while (start < ft_strlen(s))
     {
-        if (s[i] != c && s[i] != 0)
+        if (s[start] != c && s[start] != 0)
         {
+            while (s[start + len] != c && s[start + len] != 0)
+                len++;
+            result[i] = strings(s, start, len);
             i++;
+            start += len;
+            len = 1;
         }
-        else if (s[i] == c)
-        {
-            result[j] = strings(s, j, i);
-            j++;
-        }
+        else if (s[start] == c)
+            start++;
     }
-    
-    
+    result[i] = 0;
     return(result);
 }

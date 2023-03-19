@@ -379,12 +379,36 @@ void    tests_ft_putnbr_fd(void)
     fclose(file);
 }
 
-void    tests_cal_count(void)
-{
-    char    s[] = "";
-    char    c = ' ';
+// void    tests_cal_count(void)
+// {
+//     char    s[] = "";
+//     char    c = ' ';
     
-    printf("%ld\n", cal_count(s, c));
+//     printf("%ld\n", cal_count(s, c));
+// }
+
+void    tests_ft_split(void)
+{
+    char    s[] = " I  will Test    This ! ";
+    char    c = ' ';
+    char    **result;
+    int     i;
+
+    result = ft_split(s, c);
+    i = 0;
+    TEST_ASSERT_EQUAL_STRING("I", result[0]);
+    TEST_ASSERT_EQUAL_STRING("will", result[1]);
+    TEST_ASSERT_EQUAL_STRING("Test", result[2]);
+    TEST_ASSERT_EQUAL_STRING("This", result[3]);
+    TEST_ASSERT_EQUAL_STRING("!", result[4]);
+    TEST_ASSERT_EQUAL_PTR(NULL, result[5]);
+    while (result[i] != 0)
+    {
+        printf("%s\n", result[i]);
+        free(result[i]);
+        i++;
+    }
+    free(result);
 }
 
 void setUp(void) {
@@ -428,7 +452,8 @@ int main(void) {
     RUN_TEST(tests_ft_putstr_fd);
     RUN_TEST(tests_ft_putendl_fd);
     RUN_TEST(tests_ft_putnbr_fd);
-    RUN_TEST(tests_cal_count);
+   // RUN_TEST(tests_cal_count); // apagar
+    RUN_TEST(tests_ft_split);
     return UNITY_END();
 }
 
