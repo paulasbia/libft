@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:39:18 by paula             #+#    #+#             */
-/*   Updated: 2023/03/19 10:23:00 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/19 11:00:25 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t     cal_count(char const *s, char c)
+static size_t     cal_count(char const *s, char c)
 {
     size_t  count;
 
@@ -28,7 +28,7 @@ size_t     cal_count(char const *s, char c)
     return(count);
 }
 
-char    *strings(char const *str, int start, int len)
+static char    *strings(char const *str, int start, int len)
 {
     char    *new;
     char    *r_new;
@@ -51,29 +51,34 @@ char    *strings(char const *str, int start, int len)
     return(r_new);    
 }
 
+static void create_word(char const *s, char c, char **result, size_t i, size_t *start)
+{
+    size_t     len;
+
+    len = 1;    
+    while (s[*start + len] != c && s[*start + len] != 0)
+        len++;
+    result[i] = strings(s, *start, len);
+    *start += len;
+}
+
 char    **ft_split(char const *s, char c)
 {
     char    **result;
     size_t     start;
-    size_t     len;
     size_t     i;
 
     result = (char **)malloc(sizeof(char *) * cal_count(s, c));
     if (result == 0)
         return (NULL);
     start = 0;
-    len = 1;
     i = 0;
     while (start < ft_strlen(s))
     {
         if (s[start] != c && s[start] != 0)
         {
-            while (s[start + len] != c && s[start + len] != 0)
-                len++;
-            result[i] = strings(s, start, len);
+            create_word(s, c, result, i, &start);
             i++;
-            start += len;
-            len = 1;
         }
         else if (s[start] == c)
             start++;

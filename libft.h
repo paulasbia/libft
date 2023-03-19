@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:46:41 by paula             #+#    #+#             */
-/*   Updated: 2023/03/19 10:20:41 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/19 11:01:04 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void    ft_putnbr_fd(int n, int fd);
 size_t  ft_strlen(const char *str);
 size_t  ft_strlcpy(char *dest, const char *src, size_t size);
 size_t  ft_strlcat(char *dest, const char *src, size_t size);
-
-size_t     cal_count(char const *s, char c);
 
 char    *ft_strnstr(const char *str, const char *find, size_t n);
 char    *ft_strchr(const char *s, int c);

@@ -390,8 +390,10 @@ void    tests_ft_putnbr_fd(void)
 void    tests_ft_split(void)
 {
     char    s[] = " I  will Test    This ! ";
+    char    s2[] = "";
     char    c = ' ';
     char    **result;
+    char    **result2;
     int     i;
 
     result = ft_split(s, c);
@@ -402,6 +404,9 @@ void    tests_ft_split(void)
     TEST_ASSERT_EQUAL_STRING("This", result[3]);
     TEST_ASSERT_EQUAL_STRING("!", result[4]);
     TEST_ASSERT_EQUAL_PTR(NULL, result[5]);
+
+    result2 = ft_split(s2, c);
+    TEST_ASSERT_EQUAL_PTR(NULL, result2[0]);
     while (result[i] != 0)
     {
         printf("%s\n", result[i]);
@@ -409,6 +414,7 @@ void    tests_ft_split(void)
         i++;
     }
     free(result);
+    free(result2);
 }
 
 void setUp(void) {
