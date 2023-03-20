@@ -409,12 +409,28 @@ void    tests_ft_split(void)
     TEST_ASSERT_EQUAL_PTR(NULL, result2[0]);
     while (result[i] != 0)
     {
-        printf("%s\n", result[i]);
+       // printf("%s\n", result[i]);
         free(result[i]);
         i++;
     }
     free(result);
     free(result2);
+}
+
+void    test_ft_itoa_with_number(int a, char *expected)
+{
+    char    *result;
+    result = ft_itoa(a);
+
+    TEST_ASSERT_EQUAL_STRING(expected, result),
+    free(result);
+}
+
+void    tests_ft_itoa(void)
+{
+    test_ft_itoa_with_number(0, "0");
+    test_ft_itoa_with_number(-42, "-42");
+    test_ft_itoa_with_number(INT_MIN, "-2147483648");
 }
 
 void setUp(void) {
@@ -460,6 +476,7 @@ int main(void) {
     RUN_TEST(tests_ft_putnbr_fd);
    // RUN_TEST(tests_cal_count); // apagar
     RUN_TEST(tests_ft_split);
+    RUN_TEST(tests_ft_itoa);
     return UNITY_END();
 }
 

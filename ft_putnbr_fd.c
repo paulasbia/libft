@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:23:17 by paula             #+#    #+#             */
-/*   Updated: 2023/03/17 13:28:00 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/20 08:58:52 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_print(int n, int fd)
+static void    ft_print(int n, int fd)
 {
     int digit;
 
