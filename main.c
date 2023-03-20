@@ -448,6 +448,33 @@ void    tests_ft_strmapi(void)
     free(s);
 }
 
+void    f_upper2(unsigned int i, char *s)
+{
+    (void)i;
+    *s = ft_toupper(*s);
+}
+
+void    f_lower(unsigned int i, char *s)
+{
+    (void)i;
+    *s = ft_tolower(*s);
+}
+
+void    tests_ft_striteri_value(char *expected, char *s, void (*f)(unsigned int, char*))
+{
+    ft_striteri(s, f);
+    TEST_ASSERT_EQUAL_STRING(expected, s);
+}
+
+void    tests_ft_striteri(void)
+{
+    char    s[] = "efghi";
+    
+    tests_ft_striteri_value("EFGHI", s, f_upper2);
+    tests_ft_striteri_value("efghi", s, f_lower);
+
+}
+
 void setUp(void) {
     // set stuff up here
 }
@@ -493,6 +520,7 @@ int main(void) {
     RUN_TEST(tests_ft_split);
     RUN_TEST(tests_ft_itoa);
     RUN_TEST(tests_ft_strmapi);
+    RUN_TEST(tests_ft_striteri);
     return UNITY_END();
 }
 

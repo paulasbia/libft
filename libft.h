@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:46:41 by paula             #+#    #+#             */
-/*   Updated: 2023/03/20 12:44:24 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/20 13:29:49 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void    ft_putchar_fd(char c, int fd);
 void    ft_putstr_fd(char *s, int fd);
 void    ft_putendl_fd(char *s, int fd);
 void    ft_putnbr_fd(int n, int fd);
+void    ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 size_t  ft_strlen(const char *str);
 size_t  ft_strlcpy(char *dest, const char *src, size_t size);
