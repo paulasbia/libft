@@ -433,6 +433,21 @@ void    tests_ft_itoa(void)
     test_ft_itoa_with_number(INT_MIN, "-2147483648");
 }
 
+char    f_upper(unsigned int index, char c)
+{
+    (void)index;
+    return(ft_toupper(c));
+}
+
+void    tests_ft_strmapi(void)
+{
+    char    *s;
+
+    s = ft_strmapi("abcd", f_upper);
+    TEST_ASSERT_EQUAL_STRING("ABCD", s);
+    free(s);
+}
+
 void setUp(void) {
     // set stuff up here
 }
@@ -477,6 +492,7 @@ int main(void) {
    // RUN_TEST(tests_cal_count); // apagar
     RUN_TEST(tests_ft_split);
     RUN_TEST(tests_ft_itoa);
+    RUN_TEST(tests_ft_strmapi);
     return UNITY_END();
 }
 
