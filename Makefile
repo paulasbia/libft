@@ -6,7 +6,7 @@
 #    By: paula <paula@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 17:48:30 by paula             #+#    #+#              #
-#    Updated: 2023/03/22 10:31:15 by paula            ###   ########.fr        #
+#    Updated: 2023/03/22 18:54:14 by paula            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,8 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	ar -crs $(NAME) $(OBJS)
 
-test:
-	gcc -ggdb $(FLAGS) $(SRCS) libft.h main.c unity_internals.h unity.c unity.h -lbsd -o result.out
+test: all
+	gcc -ggdb $(FLAGS) main.c unity_internals.h unity.c unity.h $(NAME) -lbsd -o result.out
    
 run:
 	./result.out
