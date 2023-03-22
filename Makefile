@@ -6,13 +6,11 @@
 #    By: paula <paula@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 17:48:30 by paula             #+#    #+#              #
-#    Updated: 2023/03/22 09:22:36 by paula            ###   ########.fr        #
+#    Updated: 2023/03/22 10:31:15 by paula            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-
-INCLUDE = libft.h
 
 SRCS =  ft_isalpha.c  ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c\
 		ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c\
@@ -25,8 +23,10 @@ OBJS = $(SRCS:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
-%.o: $(SRCS)%.c $(INCLUDE)%.h
-	gcc $(FLAGS) -c $< -I $(INCLUDE) -o $(OBJS)/$@
+%.o: %.c
+	cc $(FLAGS) -c $< -o $@
+
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	ar -crs $(NAME) $(OBJS)
@@ -42,8 +42,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-
-all: $(NAME)
 
 re: fclean all
 
