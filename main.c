@@ -472,7 +472,17 @@ void    tests_ft_striteri(void)
     
     tests_ft_striteri_value("EFGHI", s, f_upper2);
     tests_ft_striteri_value("efghi", s, f_lower);
+}
 
+void    tests_ft_lstnew(void)
+{
+    char content[] = "paula";
+    t_list  *result;
+
+    result = ft_lstnew(content);
+    TEST_ASSERT_EQUAL_STRING("paula", result->content);
+    TEST_ASSERT_EQUAL_PTR(NULL, result->next);
+    free(result);
 }
 
 void setUp(void) {
@@ -521,6 +531,7 @@ int main(void) {
     RUN_TEST(tests_ft_itoa);
     RUN_TEST(tests_ft_strmapi);
     RUN_TEST(tests_ft_striteri);
+    RUN_TEST(tests_ft_lstnew);
     return UNITY_END();
 }
 

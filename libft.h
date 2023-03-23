@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:46:41 by paula             #+#    #+#             */
-/*   Updated: 2023/03/20 13:29:49 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/23 08:25:14 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,13 @@ char    *ft_strtrim(char const *s1, char const *set);
 char    **ft_split(char const *s, char c);
 char    *ft_itoa(int n);
 char    *ft_strmapi(char const *s, char (*f)(unsigned int, char));
+
+typedef struct s_list
+{
+    void *content;
+    struct s_list *next;
+}   t_list;
+
+t_list  *ft_lstnew(void *content);
+void ft_lstadd_front(t_list **lst, t_list *new);
 #endif

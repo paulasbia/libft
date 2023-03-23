@@ -6,7 +6,7 @@
 #    By: paula <paula@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 17:48:30 by paula             #+#    #+#              #
-#    Updated: 2023/03/22 18:54:14 by paula            ###   ########.fr        #
+#    Updated: 2023/03/22 19:27:19 by paula            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,11 @@ SRCS =  ft_isalpha.c  ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c\
 		ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c\
 		ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
+SRCS_B = ft_lstnew.c 
+
 OBJS = $(SRCS:.c=.o)
+
+OBJS_B = $(SRCS_B:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -32,7 +36,7 @@ $(NAME): $(OBJS)
 	ar -crs $(NAME) $(OBJS)
 
 test: all
-	gcc -ggdb $(FLAGS) main.c unity_internals.h unity.c unity.h $(NAME) -lbsd -o result.out
+	gcc -ggdb $(FLAGS) main.c unity_internals.h unity.c unity.h $(SRCS_B) $(NAME) -lbsd -o result.out
    
 run:
 	./result.out
@@ -45,7 +49,8 @@ fclean: clean
 
 re: fclean all
 
-valgrind: test
+valgrind: clean fclean test
+	rm -f $(OBJS) $(OBJS_B)
 	valgrind --leak-check=full ./result.out
 
 .PHONY: clean fclean all re
