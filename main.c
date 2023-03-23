@@ -524,6 +524,19 @@ void    tests_ft_lstsize(void)
     destroy(lst);
 }
 
+void    tests_ft_lstlast(void)
+{
+    t_list  *new;
+    t_list  *lst;
+    t_list  *bkp;
+    new = ft_lstnew("teste");
+    lst = ft_lstnew("01");
+    bkp = lst;
+    ft_lstadd_front(&lst, new);
+    TEST_ASSERT_EQUAL_STRING("01", bkp->content);
+    destroy(lst);
+}
+
 void setUp(void) {
     // set stuff up here
 }
@@ -573,6 +586,7 @@ int main(void) {
     RUN_TEST(tests_ft_lstnew);
     RUN_TEST(tests_ft_lstadd_front);
     RUN_TEST(tests_ft_lstsize);
+    RUN_TEST(tests_ft_lstlast);
     return UNITY_END();
 }
 
