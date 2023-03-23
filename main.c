@@ -485,6 +485,22 @@ void    tests_ft_lstnew(void)
     free(result);
 }
 
+void    tests_ft_lstadd_front(void)
+{
+    t_list    *new;
+    t_list      *lst;
+
+    new = ft_lstnew("teste");
+    lst = ft_lstnew("01");
+    ft_lstadd_front(&lst, new);
+    TEST_ASSERT_EQUAL_PTR(new, lst);
+    TEST_ASSERT_EQUAL_STRING(lst->content, "teste");
+    TEST_ASSERT_EQUAL_STRING(lst->next->content, "01");
+    TEST_ASSERT_EQUAL_STRING(new->next->content, "01");
+    free(new->next);
+    free(new);
+}
+
 void setUp(void) {
     // set stuff up here
 }
@@ -532,6 +548,7 @@ int main(void) {
     RUN_TEST(tests_ft_strmapi);
     RUN_TEST(tests_ft_striteri);
     RUN_TEST(tests_ft_lstnew);
+    RUN_TEST(tests_ft_lstadd_front);
     return UNITY_END();
 }
 
