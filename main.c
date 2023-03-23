@@ -485,6 +485,16 @@ void    tests_ft_lstnew(void)
     free(result);
 }
 
+void    destroy(t_list *lst)
+{
+    if (lst->next)
+    {
+        destroy(lst->next);
+    }
+
+    free(lst);
+}
+
 void    tests_ft_lstadd_front(void)
 {
     t_list    *new;
@@ -497,8 +507,9 @@ void    tests_ft_lstadd_front(void)
     TEST_ASSERT_EQUAL_STRING(lst->content, "teste");
     TEST_ASSERT_EQUAL_STRING(lst->next->content, "01");
     TEST_ASSERT_EQUAL_STRING(new->next->content, "01");
-    free(new->next);
-    free(new);
+    new->content = "paula";
+    TEST_ASSERT_EQUAL_STRING(lst->content, "paula");
+    destroy(lst);
 }
 
 void setUp(void) {
