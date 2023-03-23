@@ -491,8 +491,8 @@ void    destroy(t_list *lst)
     {
         destroy(lst->next);
     }
-
     free(lst);
+    lst = NULL;
 }
 
 void    tests_ft_lstadd_front(void)
@@ -509,6 +509,18 @@ void    tests_ft_lstadd_front(void)
     TEST_ASSERT_EQUAL_STRING(new->next->content, "01");
     new->content = "paula";
     TEST_ASSERT_EQUAL_STRING(lst->content, "paula");
+    destroy(lst);
+}
+
+void    tests_ft_lstsize(void)
+{
+    t_list  *new;
+    t_list  *lst;
+
+    new = ft_lstnew("teste");
+    lst = ft_lstnew("01");
+    ft_lstadd_front(&lst, new);
+    TEST_ASSERT_EQUAL_INT(2, ft_lstsize(lst));
     destroy(lst);
 }
 
@@ -560,6 +572,7 @@ int main(void) {
     RUN_TEST(tests_ft_striteri);
     RUN_TEST(tests_ft_lstnew);
     RUN_TEST(tests_ft_lstadd_front);
+    RUN_TEST(tests_ft_lstsize);
     return UNITY_END();
 }
 
