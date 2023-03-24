@@ -595,13 +595,49 @@ void    f_modified(void *s)
 void    tests_ft_lstiter(void)
 {
     t_list  *new;
+    t_list  *second;
 
     new = ft_lstnew(ft_strdup("teste"));
+    second = ft_lstnew(ft_strdup("aaa"));
+    ft_lstadd_back(&new, second);
     ft_lstiter(new, f_modified);
     TEST_ASSERT_EQUAL_STRING("ddddd", new->content);
+    TEST_ASSERT_EQUAL_STRING("ddd", second->content);
     ft_lstclear(&new, free);
 }
 
+void    *f_modified2(void *s)
+{
+    int		len;
+	char	*content;
+
+	len = 0;
+	content = (char *)s;
+	while (content[len])
+	{
+		content[len++] = 'd';
+	}
+    return(s);
+}
+
+void    tests_ft_lstmap(void)
+{
+    t_list  *first;
+    t_list  *second;
+    t_list  *new;
+
+    first = ft_lstnew(ft_strdup("teste"));
+    second = ft_lstnew(ft_strdup("aaa"));
+    ft_lstadd_front(&first, second);
+    printf("%s\n", (char *)first->content);
+    printf("%s\n", (char *)first->next->content);
+    new = ft_lstmap(second, f_modified2, free);
+    printf("%s\n", (char *)first->content);
+    printf("%s\n", (char *)first->next->content);
+    TEST_ASSERT_EQUAL_STRING("ddddd", new->content);
+    ft_lstclear(&first, free);
+    destroy(new);
+}
 
 void setUp(void) {
     // set stuff up here
@@ -657,6 +693,7 @@ int main(void) {
     RUN_TEST(tests_ft_lstdelone);
     RUN_TEST(tests_ft_lstclear);
     RUN_TEST(tests_ft_lstiter);
+    RUN_TEST(tests_ft_lstmap);
     return UNITY_END();
 }
 
