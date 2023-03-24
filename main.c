@@ -570,6 +570,15 @@ void    tests_ft_lstdelone(void)
     free(lst);
 }
 
+void    tests_ft_lstclear(void)
+{
+    t_list  *new;
+
+    new = ft_lstnew(ft_strdup("teste"));
+    ft_lstclear(&new, free);
+    TEST_ASSERT_EQUAL_PTR(NULL, new);
+}
+
 void setUp(void) {
     // set stuff up here
 }
@@ -622,6 +631,7 @@ int main(void) {
     RUN_TEST(tests_ft_lstlast);
     RUN_TEST(tests_ft_lstadd_back);
     RUN_TEST(tests_ft_lstdelone);
+    RUN_TEST(tests_ft_lstclear);
     return UNITY_END();
 }
 

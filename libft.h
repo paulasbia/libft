@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:46:41 by paula             #+#    #+#             */
-/*   Updated: 2023/03/24 09:36:24 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/24 10:04:07 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ int     ft_lstsize(t_list *lst);
 t_list *ft_lstlast(t_list *lst);
 void    ft_lstadd_back(t_list **lst, t_list *new);
 void    ft_lstdelone(t_list *lst, void (*del)(void*));
+void    ft_lstclear(t_list **lst, void (*del)(void*));
 #endif
