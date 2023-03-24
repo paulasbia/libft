@@ -579,6 +579,30 @@ void    tests_ft_lstclear(void)
     TEST_ASSERT_EQUAL_PTR(NULL, new);
 }
 
+void    f_modified(void *s)
+{
+    int		len;
+	char	*content;
+
+	len = 0;
+	content = (char *)s;
+	while (content[len])
+	{
+		content[len++] = 'd';
+	}
+}
+
+void    tests_ft_lstiter(void)
+{
+    t_list  *new;
+
+    new = ft_lstnew(ft_strdup("teste"));
+    ft_lstiter(new, f_modified);
+    TEST_ASSERT_EQUAL_STRING("ddddd", new->content);
+    ft_lstclear(&new, free);
+}
+
+
 void setUp(void) {
     // set stuff up here
 }
@@ -632,6 +656,7 @@ int main(void) {
     RUN_TEST(tests_ft_lstadd_back);
     RUN_TEST(tests_ft_lstdelone);
     RUN_TEST(tests_ft_lstclear);
+    RUN_TEST(tests_ft_lstiter);
     return UNITY_END();
 }
 
