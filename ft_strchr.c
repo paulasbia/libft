@@ -6,15 +6,15 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 08:53:39 by paula             #+#    #+#             */
-/*   Updated: 2023/03/03 09:18:26 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/27 10:36:45 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_strchr(const char *s, int c)
+char *ft_strchr(const char *s, int c)
 {
-    while (((char)c) != *s)
+    while(((char)c) != *s)
     {
         if (*s == 0)
         {

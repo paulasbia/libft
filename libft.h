@@ -6,12 +6,12 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:46:41 by paula             #+#    #+#             */
-/*   Updated: 2023/03/24 11:55:30 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/27 10:21:56 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT
-#define LIBFT
+#ifndef LIBFT_H
+#define LIBFT_H
 
 #include <stdlib.h>
 #include <unistd.h>
