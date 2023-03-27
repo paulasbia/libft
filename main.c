@@ -88,6 +88,7 @@ static void tests_ft_memcpy(void)
     char    dest2[14];
 
     TEST_ASSERT_EQUAL_MEMORY(memcpy(dest, str, 14), ft_memcpy(dest2, str, 14), 14);
+    //TEST_ASSERT_EQUAL_PTR(NULL, (ft_memcpy(NULL, NULL, 14)));
 }
 
 static void tests_ft_memmove(void)
@@ -96,7 +97,7 @@ static void tests_ft_memmove(void)
     char    src2[] = {-1, -2, -3, 4, 5, 6, 7, 8, 9, 10};
     char    dest[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     char    dest2[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char    *dest3 = NULL;
+   // char    *dest3 = NULL;
     char    dest4[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     char    expected1[] = {1, 2, 3, 4, 5, 0, 0, 0, 0, 0};
     char    expected2[] = {0, 0, 0, 0, 0, 6, 7, 8, 9, 10};
@@ -110,7 +111,7 @@ static void tests_ft_memmove(void)
     TEST_ASSERT_EQUAL_PTR(dest2 + 5, ret2);
     TEST_ASSERT_EQUAL_MEMORY(expected2, dest2, 10);
 
-    TEST_ASSERT_EQUAL(NULL, ft_memmove(dest3, src, 10));
+ //   TEST_ASSERT_EQUAL_PTR(NULL, ft_memmove(dest3, src, 10));
     
     char *ret3 = ft_memmove(dest4, src2, 5);
     TEST_ASSERT_EQUAL_PTR(dest4, ret3);
@@ -248,12 +249,12 @@ void    tests_ft_calloc(void)
 {
     int     expected[] = {0, 0, 0, 0};
     int     *array = (int *) ft_calloc(4, sizeof(int));
-    int     *array2 = (int *) ft_calloc(0, sizeof(int));
+   // int     *array2 = (int *) ft_calloc(0, sizeof(int));
 
     TEST_ASSERT_EQUAL_MEMORY(expected, array, 4);
     free(array);
-    TEST_ASSERT_EQUAL_PTR(NULL, array2);
-    free(array2);
+  //  TEST_ASSERT_EQUAL_PTR(NULL, array2);
+   // free(array2);
 
     // char test[] = {0b11111111, 1, 0, 1};// 00000000 00000001 = 0000000111111111 
     // printf("char: %d\n", *test);

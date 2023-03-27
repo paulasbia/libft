@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 15:34:14 by paula             #+#    #+#             */
-/*   Updated: 2023/03/06 16:16:03 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/27 12:26:21 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void    *ft_memmove(void *dest, const void *src, size_t n)
 {
-    if ((dest == NULL) || (src == NULL))
+    if (((unsigned char *)dest) == ((unsigned char *)src))
     {
-        return (NULL);
+        return (dest);
     }
     if (dest > src)
     {
