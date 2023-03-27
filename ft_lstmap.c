@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 11:54:31 by paula             #+#    #+#             */
-/*   Updated: 2023/03/24 13:38:52 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/27 09:53:54 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ t_list  *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
     if (!lst)
         return(NULL);  
-    temp = lst;
+    new = NULL;
     while (lst != 0)
     {
-        ft_lstiter(temp->content, f);
-        new = temp;
-        if (!new)
+        temp = ft_lstnew(f(lst->content));
+        if (!temp)
         {
             ft_lstclear(&new, del);
+            return(NULL);
         }
+        ft_lstadd_back(&new, temp);
         lst = lst->next;
-        temp = lst;
     }
     return(new);
 }
