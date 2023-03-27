@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 09:04:42 by paula             #+#    #+#             */
-/*   Updated: 2023/03/17 11:07:11 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/27 11:10:28 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ char    *ft_substr(char const *s, unsigned int start, size_t len)
     s_len = ft_strlen(s) + 1;
     if (start >= s_len)
 	{
-        return (NULL);
+        sub = malloc(1);
+        *sub = 0;
+        return(sub);
 	}
     if (s_len - start >= len)
         sub = (char *)malloc(sizeof(char) * (len + 1));

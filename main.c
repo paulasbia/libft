@@ -287,7 +287,7 @@ void    tests_ft_substr(void)
     TEST_ASSERT_EQUAL_STRING(expected2, sub2);
     free(sub2);
     sub3 = ft_substr(str, 20, 3);
-    TEST_ASSERT_EQUAL_STRING(0, sub3);
+    TEST_ASSERT_EQUAL_STRING("", sub3);
     free(sub3);
 
     sub4 = ft_substr(str, 0, 50);
