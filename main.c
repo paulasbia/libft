@@ -184,12 +184,14 @@ static void tests_ft_strncmp(void)
 {
     const char  s1[] = "just";
     const char s2[] = "jUst";
+    const char  s3[] = "";
 
     TEST_ASSERT_EQUAL(0, ft_strncmp(s1, s2, 1));
     TEST_ASSERT_EQUAL(32, ft_strncmp(s1, s2, 2));
     //printf("strncmp %d \n", strncmp(s1, s2, 4));
     TEST_ASSERT_EQUAL(strncmp(s1, s2, 4) > 0, ft_strncmp(s1, s2, 4) > 0);
     TEST_ASSERT_EQUAL(strncmp(s1, s2, 1), ft_strncmp(s1, s2, 1));
+    TEST_ASSERT_EQUAL(strncmp(s3, s2, 1), ft_strncmp(s3, s2, 1));
 }
 
 static void tests_ft_memchr(void)
