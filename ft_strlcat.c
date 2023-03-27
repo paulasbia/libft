@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:36:03 by paula             #+#    #+#             */
-/*   Updated: 2023/03/02 17:21:16 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/27 10:33:55 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ size_t  ft_strlcat(char *dest, const char *src, size_t size)
         j++;
     }
     dest[i] = 0;
-    return (i);
+    return (i + ft_strlen(&src[j]));
 }

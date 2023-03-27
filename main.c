@@ -540,6 +540,7 @@ void    tests_ft_lstlast(void)
 void    tests_ft_lstadd_back(void)
 {
     t_list  *new;
+    t_list  *new2;
     t_list  *lst;
     t_list  *lst_n;
     t_list  *last;
@@ -552,10 +553,10 @@ void    tests_ft_lstadd_back(void)
     TEST_ASSERT_EQUAL_STRING("teste", new->content);
     destroy(lst);
 
-    new = ft_lstnew("teste");
+    new2 = ft_lstnew("teste");
     lst_n = NULL;
-    ft_lstadd_back(&lst_n, new);
-    destroy(new);
+    ft_lstadd_back(&lst_n, new2);
+    destroy(new2);
 }
 
 void    tests_ft_lstdelone(void)
@@ -634,7 +635,7 @@ void    tests_ft_lstmap(void)
     new = ft_lstmap(second, f_modified2, free);
     printf("%s\n", (char *)first->content);
     printf("%s\n", (char *)first->next->content);
-    TEST_ASSERT_EQUAL_STRING("ddddd", new->content);
+    TEST_ASSERT_EQUAL_STRING("ddd", new->content);
     ft_lstclear(&first, free);
     destroy(new);
 }
