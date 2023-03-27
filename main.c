@@ -219,6 +219,7 @@ static void tests_ft_memcmp(void)
 static void tests_ft_strnstr(void)
 {
     char    str[] = "I will test this function";
+    char    str2[] = "";
     char    *result = &str[12];
     char    find[] = "this";
     char    find2[] = "paula";
@@ -228,6 +229,7 @@ static void tests_ft_strnstr(void)
     TEST_ASSERT_EQUAL_PTR(NULL, ft_strnstr(str, find2, 30));
     TEST_ASSERT_EQUAL_PTR(str, ft_strnstr(str, find3, 30));
     TEST_ASSERT_EQUAL_PTR(strnstr(str, find3, 30), ft_strnstr(str, find3, 30));
+    TEST_ASSERT_EQUAL_PTR(strnstr(str2, find2, 30), ft_strnstr(str2, find2, 30));
     
 }
 

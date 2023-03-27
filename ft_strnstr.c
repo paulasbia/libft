@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:59:40 by paula             #+#    #+#             */
-/*   Updated: 2023/03/06 13:14:52 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/27 11:44:36 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char    *ft_strnstr(const char *str, const char *find, size_t n)
 
 	i = 0;
 	j = 0;
-	if ((str[i] == 0 || find[j]) == 0)
+	if (find[j] == 0)
 		return ((char *)str);
 	while (str[i] != 0)
 	{
