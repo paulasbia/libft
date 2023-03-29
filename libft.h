@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:46:41 by paula             #+#    #+#             */
-/*   Updated: 2023/03/27 10:21:56 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/29 11:53:43 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int     ft_atoi(const char *nptr);
 void    *ft_calloc(size_t nmemb, size_t size);
 void    *ft_memset(void *s, int c, size_t n);
 void    ft_bzero(void *s, size_t n);
-void    *ft_memcpy(void *dest, const void *src, size_t n);
+void    *ft_memcpy(void *dest, const void *src, size_t n); // verificar se esta com erro depois
 void    *ft_memmove(void *dest, const void *src, size_t n);
 void    *ft_memchr(const void *s, int c, size_t n);
 void    ft_putchar_fd(char c, int fd);
