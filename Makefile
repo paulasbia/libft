@@ -6,7 +6,7 @@
 #    By: paula <paula@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 17:48:30 by paula             #+#    #+#              #
-#    Updated: 2023/03/27 09:36:59 by paula            ###   ########.fr        #
+#    Updated: 2023/03/30 13:02:06 by paula            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,13 @@ SRCS =  ft_isalpha.c  ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c\
 SRCS_B = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c\
 		 ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
+SRCS_P = ft_printf.c 
+
 OBJS = $(SRCS:.c=.o)
 
 OBJS_B = $(SRCS_B:.c=.o)
+
+OBJS_P = $(SRCS_P:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -36,11 +40,14 @@ all: $(NAME)
 bonus: $(OBJS_B)
 	ar -crs $(NAME) $(OBJS_B)
 
+printf: $(OBJS_P)
+	ar -crs $(NAME) $(OBJS_P)
+
 $(NAME): $(OBJS)
 	ar -crs $(NAME) $(OBJS) 
 	
 test: all
-	gcc -ggdb $(FLAGS) main.c unity_internals.h unity.c unity.h $(SRCS_B) $(NAME) -lbsd -o result.out
+	gcc -ggdb $(FLAGS) ft_printf.c $(SRCS_B) $(NAME) -lbsd -o result.out
    
 run:
 	./result.out

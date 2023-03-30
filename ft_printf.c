@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:27:43 by paula             #+#    #+#             */
-/*   Updated: 2023/03/30 11:27:13 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/30 13:13:49 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,19 @@
 int replace(char st, va_list ap)
 {
     int ret;
+    char    *arg;
 
     ret = 0;
     if (st == '%')
     {
-        ret = putchar('%');
+        ft_putchar_fd(st, 1);
+        ret++;
     }
     if (st == 's')
     {
-        ret = puts(va_arg(ap, char*));
+        arg = va_arg(ap, char*);
+        ft_putstr_fd(arg, 1);
+        ret = ft_strlen(arg);
     }
     return(ret);
 }
