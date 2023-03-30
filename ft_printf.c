@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:27:43 by paula             #+#    #+#             */
-/*   Updated: 2023/03/30 13:13:49 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/30 13:24:55 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ int replace(char st, va_list ap)
         ft_putchar_fd(st, 1);
         ret++;
     }
+    if (st == 'c')
+    {
+        ft_putchar_fd(va_arg(ap, int), 1);
+        ret++;
+    }
+    
     if (st == 's')
     {
         arg = va_arg(ap, char*);
@@ -61,8 +67,8 @@ int main(void)
     int ret;
     int ret2;
     
-    ret = ft_printf("ola %s %s\n", "ola", "ola");
-    ret2 = printf("ola %s %s\n", "ola", "ola");
+    ret = ft_printf("ola %s %s %c\n", "ola", "ola", 'a');
+    ret2 = printf("ola %s %s %c\n", "ola", "ola", 'a');
     printf("%d\n", ret);
     printf("%d\n", ret2);
 }
