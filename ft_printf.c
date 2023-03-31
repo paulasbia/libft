@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:27:43 by paula             #+#    #+#             */
-/*   Updated: 2023/03/31 09:17:04 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/31 09:32:00 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int replace(char st, va_list ap)
     {
         arg_i = va_arg(ap, int);
         ft_putuninbr(arg_i, 1);
-        arg = ft_itoa(arg_i);
+        arg = ft_uitoa(arg_i);
         ret = ft_strlen(arg);
         free(arg);
     }

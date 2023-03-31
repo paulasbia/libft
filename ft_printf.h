@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:41:39 by paula             #+#    #+#             */
-/*   Updated: 2023/03/31 08:57:05 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/31 09:31:19 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 void    ft_putuninbr(unsigned int n, int fd);
 int     ft_printf(const char *, ...);
+char    *ft_uitoa(unsigned int n);
 
 
 
