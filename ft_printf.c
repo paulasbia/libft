@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:27:43 by paula             #+#    #+#             */
-/*   Updated: 2023/03/31 08:35:27 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/31 09:17:04 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,17 @@ int replace(char st, va_list ap)
     {
         arg_i = va_arg(ap, int);
         ft_putnbr_fd(arg_i, 1);
-        ret = ft_strlen(ft_itoa(arg_i));
+        arg = ft_itoa(arg_i);
+        ret = ft_strlen(arg);
+        free(arg);
+    }
+    if (st == 'u')
+    {
+        arg_i = va_arg(ap, int);
+        ft_putuninbr(arg_i, 1);
+        arg = ft_itoa(arg_i);
+        ret = ft_strlen(arg);
+        free(arg);
     }
     
     return(ret);
@@ -74,8 +84,8 @@ int main(void)
     int ret;
     int ret2;
     
-    ret = ft_printf("ola %s %s %c %d %%\n", "ola", "ola", 'a', -42);
-    ret2 = printf("ola %s %s %c %d %%\n", "ola", "ola", 'a', -42);
+    ret = ft_printf("ola %s %s %c %d %% %u\n", "ola", "ola", 'a', -42, 2147483648);
+    ret2 = printf("ola %s %s %c %d %% %u\n", "ola", "ola", 'a', -42, (unsigned int)2147483648);
     printf("%d\n", ret);
     printf("%d\n", ret2);
 }
