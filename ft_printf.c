@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:27:43 by paula             #+#    #+#             */
-/*   Updated: 2023/03/30 13:24:55 by paula            ###   ########.fr       */
+/*   Updated: 2023/03/31 08:35:27 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int replace(char st, va_list ap)
 {
     int ret;
     char    *arg;
+    int     arg_i;
 
     ret = 0;
     if (st == '%')
@@ -29,13 +30,19 @@ int replace(char st, va_list ap)
         ft_putchar_fd(va_arg(ap, int), 1);
         ret++;
     }
-    
     if (st == 's')
     {
         arg = va_arg(ap, char*);
         ft_putstr_fd(arg, 1);
         ret = ft_strlen(arg);
     }
+    if (st == 'd' || st == 'i')
+    {
+        arg_i = va_arg(ap, int);
+        ft_putnbr_fd(arg_i, 1);
+        ret = ft_strlen(ft_itoa(arg_i));
+    }
+    
     return(ret);
 }
 
@@ -67,8 +74,8 @@ int main(void)
     int ret;
     int ret2;
     
-    ret = ft_printf("ola %s %s %c\n", "ola", "ola", 'a');
-    ret2 = printf("ola %s %s %c\n", "ola", "ola", 'a');
+    ret = ft_printf("ola %s %s %c %d %%\n", "ola", "ola", 'a', -42);
+    ret2 = printf("ola %s %s %c %d %%\n", "ola", "ola", 'a', -42);
     printf("%d\n", ret);
     printf("%d\n", ret2);
 }
