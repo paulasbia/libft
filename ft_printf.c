@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:27:43 by paula             #+#    #+#             */
-/*   Updated: 2023/03/31 09:32:00 by paula            ###   ########.fr       */
+/*   Updated: 2023/04/04 11:28:06 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,23 @@ int replace(char st, va_list ap)
         ret = ft_strlen(arg);
         free(arg);
     }
+    if (st == 'x')
+    {
+        arg_i = va_arg(ap, int);
+        ft_hexanbr_fd(arg_i, 1, 1);
+        arg = ft_uitoa(arg_i);
+        ret = ft_strlen(arg);
+        free(arg);
+    }
+    if (st == 'X')
+    {
+        arg_i = va_arg(ap, int);
+        ft_hexanbr_fd(arg_i, 1, 2);
+        arg = ft_uitoa(arg_i);
+        ret = ft_strlen(arg);
+        free(arg);
+    }
+    
     
     return(ret);
 }
@@ -83,9 +100,11 @@ int main(void)
 {
     int ret;
     int ret2;
+    char    s[] = "ola";
+    int     d = 33;
     
-    ret = ft_printf("ola %s %s %c %d %% %u\n", "ola", "ola", 'a', -42, 2147483648);
-    ret2 = printf("ola %s %s %c %d %% %u\n", "ola", "ola", 'a', -42, (unsigned int)2147483648);
+    ret = ft_printf("ola %s %s %c %d %% %u %x %X\n", s, s, 'a', d, 2147483648, d, d);
+    ret2 = printf("ola %s %s %c %d %% %u %x %X\n", s, s, 'a', d, (unsigned int)2147483648, d, d);
     printf("%d\n", ret);
     printf("%d\n", ret2);
 }
