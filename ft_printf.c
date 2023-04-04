@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:27:43 by paula             #+#    #+#             */
-/*   Updated: 2023/04/04 11:28:06 by paula            ###   ########.fr       */
+/*   Updated: 2023/04/04 14:24:32 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,11 @@ int replace(char st, va_list ap)
         ret = ft_strlen(arg);
         free(arg);
     }
-    
-    
+    if (st == 'p')
+    {
+        ft_putstr_fd("0x", 1);
+        ft_adressp(va_arg(ap, unsigned long int), 1, 1);
+    }  
     return(ret);
 }
 
@@ -101,10 +104,10 @@ int main(void)
     int ret;
     int ret2;
     char    s[] = "ola";
-    int     d = 33;
+    int     d = 15;
     
-    ret = ft_printf("ola %s %s %c %d %% %u %x %X\n", s, s, 'a', d, 2147483648, d, d);
-    ret2 = printf("ola %s %s %c %d %% %u %x %X\n", s, s, 'a', d, (unsigned int)2147483648, d, d);
+    ret = ft_printf("ola %s %s %c %d %% %u %x %X %p\n", s, s, 'a', d, 2147483648, d, d, &s);
+    ret2 = printf("ola %s %s %c %d %% %u %x %X %p\n", s, s, 'a', d, (unsigned int)2147483648, d, d, &s);
     printf("%d\n", ret);
     printf("%d\n", ret2);
 }

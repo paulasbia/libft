@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_adressp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 12:41:39 by paula             #+#    #+#             */
-/*   Updated: 2023/04/04 13:49:45 by paula            ###   ########.fr       */
+/*   Created: 2023/04/04 11:38:45 by paula             #+#    #+#             */
+/*   Updated: 2023/04/04 14:15:11 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-#define FT_PRINTF_H
-
-#include <stdarg.h>
 #include "libft.h"
+#include "ft_printf.h"
 
-void    ft_putuninbr(unsigned int n, int fd);
-int     ft_printf(const char *, ...);
-char    *ft_uitoa(unsigned int n);
-void    ft_hexanbr_fd(int n, int fd, int x);
-void    ft_adressp(unsigned long int n, int fd, int x);
+void    ft_adressp(unsigned long int n, int fd, int x)
+{
+    int digit;
 
-
-
-#endif
+    digit = n % 16;
+    if (n >= 16)
+    {
+        ft_adressp(n/16, fd, x);
+    }
+    if (digit <= 9)
+    {
+        digit = digit + 48;
+        ft_putchar_fd(digit, fd);
+    }
+    else if (digit > 9 && x == 1)
+    {
+        digit = digit + 87;
+        ft_putchar_fd(digit, fd);
+    }
+}
