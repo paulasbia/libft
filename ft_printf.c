@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:27:43 by paula             #+#    #+#             */
-/*   Updated: 2023/04/04 14:24:32 by paula            ###   ########.fr       */
+/*   Updated: 2023/04/04 14:46:42 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int replace(char st, va_list ap)
     int ret;
     char    *arg;
     int     arg_i;
+    unsigned long int   arg_iu;
 
     ret = 0;
     if (st == '%')
@@ -70,8 +71,12 @@ int replace(char st, va_list ap)
     }
     if (st == 'p')
     {
+        arg_iu = va_arg(ap, unsigned long int);
         ft_putstr_fd("0x", 1);
-        ft_adressp(va_arg(ap, unsigned long int), 1, 1);
+        ft_adressp(arg_iu, 1, 1);
+        arg = ft_uitoa(arg_iu);
+        ret = ft_strlen(arg) + 2;
+        free(arg);
     }  
     return(ret);
 }

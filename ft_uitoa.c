@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 09:27:34 by paula             #+#    #+#             */
-/*   Updated: 2023/03/31 09:33:07 by paula            ###   ########.fr       */
+/*   Updated: 2023/04/04 14:28:56 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void    ft_uprint(char *result, unsigned int n, unsigned int n_len)
     result[n_len] = digit;
 }
 
-char    *ft_uitoa(unsigned int n)
+char    *ft_uitoa(unsigned long int n)
 {
     char            *result;
     unsigned int     n_len;
