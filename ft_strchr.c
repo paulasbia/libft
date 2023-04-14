@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pde-souz < pde-souz@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 08:53:39 by paula             #+#    #+#             */
-/*   Updated: 2023/03/27 10:36:45 by paula            ###   ########.fr       */
+/*   Created: 2023/04/11 14:37:53 by pde-souz          #+#    #+#             */
+/*   Updated: 2023/04/11 14:38:05 by pde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-    while(((char)c) != *s)
-    {
-        if (*s == 0)
-        {
-            return (NULL);
-        }
-        s++;
-    }
-    return ((char *)s);
+	while (((char)c) != *s)
+	{
+		if (*s == 0)
+		{
+			return (NULL);
+		}
+		s++;
+	}
+	return ((char *)s);
 }

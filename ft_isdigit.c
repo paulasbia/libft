@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pde-souz < pde-souz@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 17:46:24 by paula             #+#    #+#             */
-/*   Updated: 2023/03/02 17:33:07 by paula            ###   ########.fr       */
+/*   Created: 2023/04/11 14:10:56 by pde-souz          #+#    #+#             */
+/*   Updated: 2023/04/11 14:11:10 by pde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isdigit (int c)
+int	ft_isdigit(int c)
 {
-    if (c >= 48 && c <= 57)
-    {
-        return (1);
-    }
-    else
-        return (0);
+	if (c >= 48 && c <= 57)
+	{
+		return (1);
+	}
+	else
+		return (0);
 }

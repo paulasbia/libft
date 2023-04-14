@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lsttiter.c                                      :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pde-souz < pde-souz@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 10:49:11 by paula             #+#    #+#             */
-/*   Updated: 2023/03/24 11:05:39 by paula            ###   ########.fr       */
+/*   Created: 2023/04/11 14:26:13 by pde-souz          #+#    #+#             */
+/*   Updated: 2023/04/11 14:26:19 by pde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-    if (!lst)
-        return;    
-    while (lst != 0)
-    {
-        f(lst->content);
-        lst = lst->next;
-    }
+	if (!lst)
+		return ;
+	while (lst != 0)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }

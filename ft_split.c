@@ -3,86 +3,75 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pde-souz < pde-souz@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/17 13:39:18 by paula             #+#    #+#             */
-/*   Updated: 2023/03/19 11:00:25 by paula            ###   ########.fr       */
+/*   Created: 2023/04/11 14:37:13 by pde-souz          #+#    #+#             */
+/*   Updated: 2023/04/14 09:56:40 by pde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t     cal_count(char const *s, char c)
+static int	ft_wordc(const char *str, char c)
 {
-    size_t  count;
+	size_t	count;
 
-    count = 1;
-    while (*s != 0)
-    {
-        if (*s != c && (*(s + 1) == c || *(s + 1) == 0))
-        {
-            count++;
-        }     
-        s++;
-    }
-    return(count);
+	count = 1;
+	while (*str != 0)
+	{
+		if (*str != c && (*(str + 1) == c || *(str + 1) == 0))
+		{
+			count++;
+		}
+		str++;
+	}
+	return (count);
 }
 
-static char    *strings(char const *str, int start, int len)
+static char	*ft_wordd(char const *str, int start, int end)
 {
-    char    *new;
-    char    *r_new;
-    int     k;
+	char	*new;
+	int		k;
 
-    new = (char *)malloc(sizeof(char) * (len + 1));
-    if (new == 0)
-    {
-        return (NULL);
-    }
-    r_new = new;
-    k = 0;
-    while (k < len)
-    {
-        *new = str[k + start];
-        k++;
-        new++;
-    }
-    *new = 0;
-    return(r_new);    
+	k = 0;
+	new = (char *)malloc(sizeof(char) * (end - start + 1));
+	if (!new)
+		return (NULL);
+	while (start < end)
+	{
+		new[k] = str[start];
+		start++;
+		k++;
+	}
+	new[k] = '\0';
+	return (new);
 }
 
-static void create_word(char const *s, char c, char **result, size_t i, size_t *start)
+char	**ft_split(char const *s, char c)
 {
-    size_t     len;
+	size_t	i;
+	size_t	j;
+	int		index;
+	char	**split;
 
-    len = 1;    
-    while (s[*start + len] != c && s[*start + len] != 0)
-        len++;
-    result[i] = strings(s, *start, len);
-    *start += len;
-}
-
-char    **ft_split(char const *s, char c)
-{
-    char    **result;
-    size_t     start;
-    size_t     i;
-
-    result = (char **)malloc(sizeof(char *) * cal_count(s, c));
-    if (result == 0)
-        return (NULL);
-    start = 0;
-    i = 0;
-    while (start < ft_strlen(s))
-    {
-        if (s[start] != c && s[start] != 0)
-        {
-            create_word(s, c, result, i, &start);
-            i++;
-        }
-        else if (s[start] == c)
-            start++;
-    }
-    result[i] = 0;
-    return(result);
+	i = 0;
+	j = 0;
+	index = -1;
+	split = (char **)malloc(((ft_wordc(s, c))) * sizeof(char *));
+	if (!split || !s)
+		return (NULL);
+	while (i <= ft_strlen(s))
+	{
+		if (s[i] != c && index < 0)
+			index = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
+		{
+			split[j] = ft_wordd(s, index, i);
+			index = -1;
+			j++;
+		}
+		i++;
+	}
+	split[j] = 0;
+	return (split);
 }

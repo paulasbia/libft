@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pde-souz < pde-souz@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 17:46:20 by paula             #+#    #+#             */
-/*   Updated: 2023/02/28 17:46:20 by paula            ###   ########.fr       */
+/*   Created: 2023/04/11 14:10:26 by pde-souz          #+#    #+#             */
+/*   Updated: 2023/04/11 14:10:38 by pde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isascii(int c)
+int	ft_isascii(int c)
 {
-    if (c >= 0 && c <= 127)
-    {
-        return (1);
-    }
-    else
-        return 0;
+	if (c >= 0 && c <= 127)
+	{
+		return (1);
+	}
+	else
+		return (0);
 }
