@@ -16,7 +16,7 @@
 
 My first own library. Project for 42 Lisboa.
 
-🚀 TLDR: this project consists of coding basic C functions (see below), which are then compiled
+🚀 This project consists of coding basic C functions (see below), which are then compiled
 	into a library for use in other projects of the cursus.
 
 ### Functions from `<ctype.h>` library
