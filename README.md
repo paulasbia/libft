@@ -14,10 +14,12 @@
 - Result        : 125%
 - Observations : (null)
 
+## About
+Refer to the [**subject of this project**](https://github.com/paulasbia/libft/tree/master/Subject).
+
 My first own library. Project for 42 Lisboa.
 
-🚀 This project consists of coding basic C functions (see below), which are then compiled
-	into a library for use in other projects of the cursus.
+This project consists of coding basic C functions (see below), which are then compiled into a library for use in other projects of the cursus.
 
 ### Functions from `<ctype.h>` library
 
